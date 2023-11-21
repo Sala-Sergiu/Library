@@ -1,0 +1,12 @@
+.book-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+
+  gap: 3rem;
+}
+
+.book-card {
+  background-color: red;
+  padding: 5px 20px;
+}

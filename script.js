@@ -26,7 +26,7 @@ function removeBook(index) {
 // Function to display books
 function displayBooks() {
   const libraryContainer = document.getElementById("library");
-  libraryContainer.innerHTML = "";
+  libraryContainer.innerHTML = ""; // Clear the container before adding books
 
   myLibrary.forEach((book, index) => {
     const bookCard = document.createElement("div");
@@ -50,7 +50,7 @@ document.querySelector(".add-book").addEventListener("click", function (event) {
 
   const author = document.querySelector(".author-input").value;
   const title = document.querySelector(".title-input").value;
-  const pages = document.querySelector(".pages-input").value;
+  let pages = document.querySelector(".pages-input").value; // Change const to let
   const notReadRadio = document.getElementById("not-read");
   const readRadio = document.getElementById("read");
   let status = "";
@@ -62,6 +62,10 @@ document.querySelector(".add-book").addEventListener("click", function (event) {
   }
 
   if (author.trim() !== "" && title.trim() !== "") {
+    if (pages.trim() === "") {
+      pages = "Not specified";
+    }
+
     addBookToLibrary(author, title, pages, status); // Add the book to the library
 
     // Clear input fields after successful submission
