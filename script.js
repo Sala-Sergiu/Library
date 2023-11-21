@@ -14,6 +14,15 @@ function addBookToLibrary(author, title, pages, status) {
   displayBooks(); // Update the displayed library
 }
 
+// Function to remove a book from the library
+function removeBook(index) {
+  const isConfirmed = confirm("Are you sure you want to remove this book?");
+  if (isConfirmed) {
+    myLibrary.splice(index, 1);
+    displayBooks();
+  }
+}
+
 // Function to display books
 function displayBooks() {
   const libraryContainer = document.getElementById("library");
@@ -42,7 +51,28 @@ document.querySelector(".add-book").addEventListener("click", function (event) {
   const author = document.querySelector(".author-input").value;
   const title = document.querySelector(".title-input").value;
   const pages = document.querySelector(".pages-input").value;
-  const status = document.querySelector(".status-input").value;
+  const notReadRadio = document.getElementById("not-read");
+  const readRadio = document.getElementById("read");
+  let status = "";
 
-  addBookToLibrary(author, title, pages, status); // Add the book to the library
+  if (notReadRadio.checked) {
+    status = "Not Read";
+  } else if (readRadio.checked) {
+    status = "Read";
+  }
+
+  if (author.trim() !== "" && title.trim() !== "") {
+    addBookToLibrary(author, title, pages, status); // Add the book to the library
+
+    // Clear input fields after successful submission
+    document.querySelector(".author-input").value = "";
+    document.querySelector(".title-input").value = "";
+    document.querySelector(".pages-input").value = "";
+    notReadRadio.checked = true; // Set "Not Read" as default after submission
+    readRadio.checked = false;
+
+    displayBooks(); // Update displayed books
+  } else {
+    alert("Please fill in both Author and Title fields.");
+  }
 });

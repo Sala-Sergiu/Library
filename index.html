@@ -12,22 +12,31 @@
       <div>
         <label class="author">Author Name:</label>
         <br />
-        <input name="author" class="author-input" type="text" placeholder="" />
+        <input name="author" class="author-input" type="text" required />
       </div>
       <div>
         <label class="title">Book Title:</label>
         <br />
-        <input name="title" class="title-input" type="text" placeholder="" />
+        <input name="title" class="title-input" type="text" required />
       </div>
       <div>
         <label class="pages">Number of Pages:</label>
         <br />
-        <input name="pages" class="pages-input" type="text" placeholder="" />
+        <input name="pages" class="pages-input" type="text" />
       </div>
       <div>
         <label class="status">Status:</label>
         <br />
-        <input name="status" class="status-input" type="text" placeholder="" />
+        <label for="not-read">Not Read:</label>
+        <input
+          id="not-read"
+          name="status"
+          class="status-input"
+          type="radio"
+          checked
+        />
+        <label for="read">Read:</label>
+        <input id="read" name="status" class="status-input" type="radio" />
       </div>
     </form>
     <button class="add-book">ADD BOOK</button>
